@@ -5,25 +5,32 @@ export default Component.extend({
   init() {
     this._super(...arguments);
 
-    let paramsFilter = this.data.tag ? `tag/${this.data.tag}/l/${this.data.filter}` : this.data.filter
+    let paramsFilter =
+      this.data.tag && this.data.tag !== "all"
+        ? `tag/${this.data.tag}/l/${this.data.filter}`
+        : this.data.filter;
 
     const filter = {
       filter: paramsFilter,
-      params: this.data.category ? {
-        category: this.data.category.id
-      } : {},
+      params: this.data.category
+        ? {
+            category: this.data.category.id,
+          }
+        : {},
     };
 
-    this.set("isLoading", true)
+    this.set("isLoading", true);
 
     this.store.findFiltered("topicList", filter).then((topicList) => {
-      this.set(
-        "topicList",
-        topicList.topics.slice(0, this.data.length)
-      );
+      this.set("topicList", topicList.topics.slice(0, this.data.length));
 
-      this.set("isLoading", false)
+      this.set("isLoading", false);
     });
+  },
+
+  @computed("data.link")
+  get MoreTopicsLink() {
+    return this.data.link === "all" ? null : this.data.link;
   },
 
   @computed("settings.more_topics_button_text")

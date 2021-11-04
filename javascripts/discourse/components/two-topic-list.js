@@ -5,6 +5,8 @@ import { inject as service } from "@ember/service";
 import { defaultHomepage } from "discourse/lib/utilities";
 import { and } from "@ember/object/computed";
 
+const DEFAULT_FILTERS = ["latest", "new", "top", "unread"];
+
 export default Component.extend({
   router: service(),
   tagName: "",
@@ -33,7 +35,7 @@ export default Component.extend({
   },
 
   get list() {
-    if(settings.feed_list <= 0) return [];
+    if (settings.feed_list <= 0) return [];
 
     const list_data = settings.feed_list.split("|").map((item, index) => {
       const classes = ["col", `col-${index}`];
@@ -45,15 +47,22 @@ export default Component.extend({
 
       const data = item.split(",");
 
+      const filter = DEFAULT_FILTERS.includes(data[2].trim().toLowerCase())
+        ? data[2].trim().toLowerCase()
+        : DEFAULT_FILTERS[0];
+
       return {
         title: data[0].trim(),
         length: data[1].trim(),
-        filter: data[2].trim(),
+        filter: filter,
         tag: data[3].trim(),
-        category: Category.findById(data[4].trim()),
+        category:
+          data[4] && data[4] !== "all"
+            ? Category.findById(data[4].trim())
+            : null,
         link: data[5].trim(),
-        classes: classes.join(" ")
-      }
+        classes: classes.join(" "),
+      };
     });
 
     return list_data;
@@ -66,5 +75,5 @@ export default Component.extend({
     return currentRouteName === `discovery.${defaultHomepage()}` || showSidebar;
   },
 
-  showTopicLists: and("shouldShow", "list.length")
+  showTopicLists: and("shouldShow", "list.length"),
 });
