@@ -6,13 +6,6 @@ $topic-height: 70;
   flex-wrap: wrap;
   margin: 2em 0 6em 0;
 
-  .discourse-tags {
-    display: none;
-  }
-  .num.likes {
-    display: none;
-  }
-
   .btn {
     border: none;
     line-height: unset;
@@ -73,10 +66,9 @@ $topic-height: 70;
   .topic-list {
     // Hides extra details in topic feeds
     margin-bottom: 1em;
+
     thead,
-    td.posts-map,
-    td.num.views,
-    td.category {
+    td.views {
       display: none;
     }
     tbody {
