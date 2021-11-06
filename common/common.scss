@@ -79,16 +79,8 @@ $topic-height: 70;
     .topic-list-item {
       height: #{$topic-height}px;
     }
-    td.posters {
-      a {
-        display: none;
-        &:last-of-type {
-          display: inline-block;
-        }
-      }
-    }
     .main-link {
-      width: 80%;
+      width: 70%;
     }
   }
 }
