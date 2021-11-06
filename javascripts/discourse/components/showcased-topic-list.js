@@ -29,7 +29,7 @@ export default Component.extend({
   },
 
   @computed("data.link")
-  get MoreTopicsLink() {
+  get moreTopicsLink() {
     return this.data.link === "all" ? null : this.data.link;
   },
 
@@ -55,6 +55,7 @@ export default Component.extend({
         action: "createTopic",
         draftKey: "createTopic",
         categoryId: this.data.category ? this.data.category.id : null,
+        tags: this.data.tag
       });
     } else {
       this.router.transitionTo("login");
