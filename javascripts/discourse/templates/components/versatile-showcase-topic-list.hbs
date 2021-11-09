@@ -5,6 +5,7 @@
     {{#d-button action=createTopic class="btn-primary btn"}}{{postButtonText}}{{/d-button}}
   </div>
 </div>
+
 {{#conditional-loading-spinner condition=isLoading}}
   {{topic-list topics=topicList showPosters=true}}
 {{/conditional-loading-spinner}}

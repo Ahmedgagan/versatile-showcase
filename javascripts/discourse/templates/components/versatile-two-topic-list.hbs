@@ -1,10 +1,10 @@
 {{#if showTopicLists}}
-{{!-- {{plugin-outlet name="above-discourse-showcased-categories" tagName=""}} --}}
+{{plugin-outlet name="above-discourse-versatile-showcase" tagName=""}}
 
 <div class="wrap custom-homepage-columns">
   <!-- Two column homepage feed -->
   {{#each list as |item|}}
-    {{showcased-topic-list data=item classNames=item.classes}}
+    {{versatile-showcase-topic-list data=item classNames=item.classes}}
   {{/each}}
 </div>
 {{/if}}

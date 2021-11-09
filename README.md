@@ -1,4 +1,4 @@
-## Showcased Categories Theme Component
+## Versatile Showcase Categories Theme Component
 
 This theme component allows you to add two "Showcased" topic lists (built from your choice of two different categories) to the top of your forum's home page.
 

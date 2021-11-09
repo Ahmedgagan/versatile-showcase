@@ -1,11 +1,7 @@
-show_as_sidebar:
-  type: bool
-  default: false
-  description: "If enabled, the showcased categories will only be rendered in a sidebar on the latest page."
 featured_topic_lists_title:
   type: string
-  default: "Showcased Categories"
-  description: "Title for showcased categories lists section"
+  default: "Versatile Showcase"
+  description: "Title for showcased lists section"
 more_topics_button_text:
   type: string
   default: "More"

@@ -24,9 +24,9 @@ export default Component.extend({
   _updateBodyClasses() {
     const shouldCleanup = this.isDestroying || this.isDestroyed;
     if (!shouldCleanup && this.shouldShow && settings.show_as_sidebar) {
-      document.body.classList.add("showcased-categories-sidebar");
+      document.body.classList.add("versatile-showcase-categories-sidebar");
     } else {
-      document.body.classList.remove("showcased-categories-sidebar");
+      document.body.classList.remove("versatile-showcase-categories-sidebar");
     }
   },
 
@@ -53,7 +53,7 @@ export default Component.extend({
 
       return {
         title: data[0].trim(),
-        length: data[1].trim(),
+        length: parseInt(data[1].trim(), 10),
         filter: filter,
         tag: data[3].trim(),
         category:
@@ -70,9 +70,7 @@ export default Component.extend({
 
   @discourseComputed("router.currentRouteName")
   shouldShow(currentRouteName) {
-    let showSidebar =
-      settings.show_as_sidebar && currentRouteName === "discovery.latest";
-    return currentRouteName === `discovery.${defaultHomepage()}` || showSidebar;
+    return currentRouteName === `discovery.${defaultHomepage()}`;
   },
 
   showTopicLists: and("shouldShow", "list.length"),

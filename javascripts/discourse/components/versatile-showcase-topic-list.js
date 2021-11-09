@@ -55,7 +55,7 @@ export default Component.extend({
         action: "createTopic",
         draftKey: "createTopic",
         categoryId: this.data.category ? this.data.category.id : null,
-        tags: this.data.tag
+        tags: this.data.tag,
       });
     } else {
       this.router.transitionTo("login");
