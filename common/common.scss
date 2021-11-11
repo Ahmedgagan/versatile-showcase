@@ -1,6 +1,6 @@
 $topic-height: 70;
 
-.custom-homepage-columns {
+.versatile-custom-homepage-columns {
   // Two column section with post feeds
   display: flex;
   flex-wrap: wrap;
@@ -76,8 +76,10 @@ $topic-height: 70;
     tr:nth-child(odd) {
       background: var(--primary-very-low);
     }
-    .topic-list-item {
-      height: #{$topic-height}px;
+    &:not(.topic-thumbnails-grid) {
+      .topic-list-item {
+        height: #{$topic-height}px;
+      }
     }
     .main-link {
       width: 70%;
