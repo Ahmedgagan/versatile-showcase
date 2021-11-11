@@ -76,7 +76,10 @@ $topic-height: 70;
     tr:nth-child(odd) {
       background: var(--primary-very-low);
     }
-    &:not(.topic-thumbnails-grid) {
+    &:not(.topic-thumbnails-grid)
+    :not(.topic-thumbnails-minimal)
+    :not(.topic-thumbnails-masonry)
+    :not(.topic-thumbnails-list) {
       .topic-list-item {
         height: #{$topic-height}px;
       }
